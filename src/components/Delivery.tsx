@@ -105,9 +105,9 @@ export function Delivery() {
               Start your Project
             </a>
               </button>
-              <button className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors">
+              {/* <button className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors">
                 View Case Studies
-              </button>
+              </button> */}
             </div>
           </div>
           <div className="relative">

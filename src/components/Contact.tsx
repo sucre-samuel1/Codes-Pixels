@@ -22,7 +22,19 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
+    // Create email content
+    const emailSubject = encodeURIComponent(formData.subject);
+    const emailBody = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    
+    // Create mailto link
+    const mailtoLink = `mailto:akinboroo@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Simulate submission success
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -30,7 +42,7 @@ export function Contact() {
       
       // Reset success message after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
-    }, 2000);
+    }, 1000);
   };
 
   return (
@@ -89,7 +101,7 @@ export function Contact() {
                 <div>
                   <h4 className="font-semibold text-gray-900">Phone</h4>
                   <a 
-                    href="tel:+1234567890" 
+                    href="tel:+2349024129891" 
                     className="text-blue-600 hover:text-blue-700 transition-colors"
                   >
                     (+234) 90-2412-9891
@@ -134,8 +146,11 @@ export function Contact() {
               <div className="text-center py-12">
                 <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
-                <p className="text-gray-600 mb-6">
-                  Thank you for reaching out. I'll get back to you within 24 hours.
+                <p className="text-gray-600 mb-4">
+                  Thank you for reaching out. Your email client should open automatically.
+                </p>
+                <p className="text-gray-500 text-sm mb-6">
+                  If it doesn't open, please send your message to: akinboroo@gmail.com
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
@@ -221,7 +236,7 @@ export function Contact() {
                     {isSubmitting ? (
                       <>
                         <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        Sending...
+                        Opening Email...
                       </>
                     ) : (
                       <>
@@ -245,27 +260,27 @@ export function Contact() {
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-purple-600 font-bold">1</span>
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Initial Consultation</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">Send Message</h4>
                 <p className="text-gray-600 text-sm">
-                  We'll discuss your project requirements and goals
+                  Fill out the form and your email client will open with your message
                 </p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-blue-600 font-bold">2</span>
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Project Proposal</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">Initial Response</h4>
                 <p className="text-gray-600 text-sm">
-                  I'll provide a detailed proposal with timeline and pricing
+                  I'll review your message and get back to you within 24 hours
                 </p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-green-600 font-bold">3</span>
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Kickoff</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">Project Discussion</h4>
                 <p className="text-gray-600 text-sm">
-                  We'll start working on your project together
+                  We'll schedule a call to discuss your project in detail
                 </p>
               </div>
             </div>

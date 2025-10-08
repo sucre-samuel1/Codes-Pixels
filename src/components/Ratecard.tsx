@@ -2,6 +2,12 @@ import React from 'react';
 import { Calendar, Code, ShoppingCart, Cloud, Mail, ExternalLink, Users, Zap } from 'lucide-react';
 
 export function RateCard() {
+  // Your WhatsApp number (replace with your actual number)
+  const whatsappNumber = "2349024129891"; // Example: Nigerian number format
+  const whatsappMessage = "Hello! I'm interested in getting a quote for your web development services. Can we discuss my project requirements?";
+  
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
   const services = [
     {
       icon: <Code className="w-6 h-6" />,
@@ -98,6 +104,17 @@ export function RateCard() {
                   <li>• Product management insights</li>
                 </ul>
               </div>
+
+              {/* WhatsApp CTA in Daily Rates */}
+              <a 
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full mt-6 bg-blue-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium flex items-center justify-center"
+              >
+                
+                Get Quote 
+              </a>
             </div>
           </div>
 
@@ -127,9 +144,14 @@ export function RateCard() {
                       ))}
                     </ul>
                     
-                    <button className="w-full mt-6 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                    <a 
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full mt-6 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center justify-center"
+                    >
                       Get Quote
-                    </button>
+                    </a>
                   </div>
                 ))}
               </div>
@@ -143,15 +165,24 @@ export function RateCard() {
                 {addOns.map((addOn, index) => (
                   <div key={index} className="border border-gray-200 rounded-xl p-6">
                     <div className="flex items-center space-x-3 mb-3">
-                      <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                      <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
                         {addOn.icon}
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900">{addOn.title}</h3>
-                        <p className="text-lg font-bold text-green-600">{addOn.price}</p>
+                        <p className="text-lg font-bold text-purple-600">{addOn.price}</p>
                       </div>
                     </div>
                     <p className="text-gray-600 text-sm">{addOn.description}</p>
+                    
+                    {/* <a 
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full mt-4 bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors font-medium text-sm flex items-center justify-center"
+                    >
+                      Inquire on WhatsApp
+                    </a> */}
                   </div>
                 ))}
               </div>
@@ -159,7 +190,7 @@ export function RateCard() {
           </div>
         </div>
 
-        {/* Contact Section
+        {/* WhatsApp Contact Section */}
         <div className="mt-12 bg-white rounded-2xl shadow-lg p-8 text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Start Your Project?</h2>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
@@ -168,30 +199,23 @@ export function RateCard() {
           
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a 
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium"
+            >
+              Chat with Me
+            </a>
+            
+            <a 
               href="mailto:akinboroo@gmail.com"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="inline-flex items-center px-6 py-3 border border-purple-300 text-gray-700 rounded-lg hover:bg-purple-50 transition-colors font-medium"
             >
               <Mail className="w-5 h-5 mr-2" />
-              akinboroo@gmail.com
-            </a>
-            
-            <a 
-              href="#"
-              className="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
-            >
-              <ExternalLink className="w-5 h-5 mr-2" />
-              View Portfolio
-            </a>
-            
-            <a 
-              href="#"
-              className="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
-            >
-              <ExternalLink className="w-5 h-5 mr-2" />
-              LinkedIn
+              Email Me
             </a>
           </div>
-        </div> */}
+        </div>
       </div>
     </section>
   );
