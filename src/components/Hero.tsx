@@ -24,8 +24,10 @@ export function Hero() {
                   Get Started <ArrowRightIcon size={16} className="ml-2" />
                 </a>
                 <button className="bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-md font-medium hover:bg-blue-50 transition-colors flex items-center">
-                  <CodeIcon size={16} className="mr-2" />
-                  View Projects
+                  <a href="#projects" className="flex items-center text-blue-600 hover:text-blue-700">
+                    <CodeIcon size={16} className="mr-2" />
+                    View Projects
+                  </a>
                 </button>
               </div>
               <div className="mt-6 flex flex-wrap gap-6 text-sm text-gray-500">

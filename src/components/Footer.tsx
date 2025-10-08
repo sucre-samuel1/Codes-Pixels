@@ -40,6 +40,11 @@ export function Footer() {
               </a>
             </li>
              <li>
+              <a href="#projects" className="text-gray-300 hover:text-emerald-400">
+                Projects
+              </a>
+            </li>
+             <li>
               <a href="#rates" className="text-gray-300 hover:text-emerald-400">
                 Rate Card
               </a>
