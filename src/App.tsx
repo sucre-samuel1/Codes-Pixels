@@ -1,7 +1,8 @@
 import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { FoodBowls } from './components/FoodBowls';
+import { RateCard } from './components/Ratecard';
+import {Contact} from './components/Contact';
 import { Services } from './components/Services';
 import { Delivery } from './components/Delivery';
 import { Footer } from './components/Footer';
@@ -10,9 +11,10 @@ export function App() {
       <Navbar />
       <main className="flex-grow">
         <Hero />
-        <FoodBowls />
         <Services />
+        <RateCard />
         <Delivery />
+        <Contact />
       </main>
       <Footer />
     </div>;
