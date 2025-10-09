@@ -1,4 +1,62 @@
 import { RocketIcon, ClockIcon, CodeIcon, MapPinIcon, ShieldIcon, ZapIcon } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+
+type CounterProps = {
+  end: number;
+  duration?: number;
+  suffix?: string;
+};
+
+const Counter: React.FC<CounterProps> = ({ end, duration = 2000, suffix = '' }) => {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          
+          let start = 0;
+          const increment = end / (duration / 16);
+          const timer = setInterval(() => {
+            start += increment;
+            if (start >= end) {
+              setCount(end);
+              clearInterval(timer);
+            } else {
+              setCount(Math.ceil(start));
+            }
+          }, 16);
+
+          return () => clearInterval(timer);
+        }
+      },
+      { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    );
+
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [end, duration, hasAnimated]);
+
+  return (
+    <div ref={ref} className="text-3xl md:text-4xl font-bold text-blue-600">
+      {count}{suffix}
+    </div>
+  );
+};
 
 export function Delivery() {
   return (
@@ -101,13 +159,10 @@ export function Delivery() {
             </div>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-md">
-                <a href="#contact" className="block px-3 py-2 rounded-md text-base font-medium text-black-700 hover:bg-blue-700">
-              Start your Project
-            </a>
+                <a href="#contact" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-blue-700">
+                  Start your Project
+                </a>
               </button>
-              {/* <button className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors">
-                View Case Studies
-              </button> */}
             </div>
           </div>
           <div className="relative">
@@ -140,15 +195,15 @@ export function Delivery() {
         {/* Stats Section */}
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
-            <div className="text-3xl md:text-4xl font-bold text-blue-600">50+</div>
+            <Counter end={50} duration={2000} />
             <div className="text-gray-600 mt-2">Projects Delivered</div>
           </div>
           <div>
-            <div className="text-3xl md:text-4xl font-bold text-blue-600">15+</div>
+            <Counter end={15} duration={2000} />
             <div className="text-gray-600 mt-2">Countries Served</div>
           </div>
           <div>
-            <div className="text-3xl md:text-4xl font-bold text-blue-600">99%</div>
+            <Counter end={99} duration={2000} suffix="%" />
             <div className="text-gray-600 mt-2">Client Satisfaction</div>
           </div>
           <div>
