@@ -14,34 +14,34 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <h1 className="text-2xl font-bold text-blue-600">
+            <h1 className="text-2xl font-bold text-purple-600">
               Code&Pixels
             </h1>
           </div>
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <a href="#" className="text-gray-700 hover:text-emerald-600 font-medium">
+            <a href="#" className="text-gray-700 hover:text-purple-600 font-medium">
               Home
             </a>
-            <a href="#services" className="text-gray-700 hover:text-emerald-600 font-medium">
+            <a href="#services" className="text-gray-700 hover:text-purple-600 font-medium">
               Services
             </a>
-            <a href="#projects" className="text-gray-700 hover:text-emerald-600 font-medium">
+            <a href="#projects" className="text-gray-700 hover:text-purple-600 font-medium">
               Projects
             </a>
-            <a href="#rates" className="text-gray-700 hover:text-emerald-600 font-medium">
+            <a href="#rates" className="text-gray-700 hover:text-purple-600 font-medium">
               Rate Card
             </a>
-            <a href="#delivery" className="text-gray-700 hover:text-emerald-600 font-medium">
+            <a href="#delivery" className="text-gray-700 hover:text-purple-600 font-medium">
               Delivery
             </a>
-            <a href="#contact" className="text-gray-700 hover:text-emerald-600 font-medium">
+            <a href="#contact" className="text-gray-700 hover:text-purple-600 font-medium">
               Contact
             </a>
           </nav>
           {/* Cart and Mobile Menu Button */}
           <div className="flex items-center">
-            <button className="bg-emerald-100 p-2 rounded-full text-blue-600 hover:bg-emerald-200 mr-4">
+            <button className="bg-purple-100 p-2 rounded-full text-purple-600 hover:bg-purple-200 mr-4">
               <ComputerIcon size={20} />
             </button>
             <button className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100" onClick={() => setIsMenuOpen(!isMenuOpen)}>

@@ -19,12 +19,12 @@ export function Hero() {
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
                   href="#contact"
-                  className="bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700 transition-colors flex items-center"
+                  className="bg-purple-600 text-white px-6 py-2 rounded-md font-medium hover:bg-purple-700 transition-colors flex items-center"
                 >
                   Get Started <ArrowRightIcon size={16} className="ml-2" />
                 </a>
-                <button className="bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-md font-medium hover:bg-blue-50 transition-colors flex items-center">
-                  <a href="#projects" className="flex items-center text-blue-600 hover:text-blue-700">
+                <button className="bg-white text-blue-600 border border-purple-600 px-6 py-3 rounded-md font-medium hover:bg-blue-50 transition-colors flex items-center">
+                  <a href="#projects" className="flex items-center text-purple-600 hover:text-purple-700">
                     <CodeIcon size={16} className="mr-2" />
                     View Projects
                   </a>
@@ -32,15 +32,15 @@ export function Hero() {
               </div>
               <div className="mt-6 flex flex-wrap gap-6 text-sm text-gray-500">
                 <div className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
                   Responsive Web Design
                 </div>
                 <div className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
                   Full-Stack Development
                 </div>
                 <div className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
                   E-commerce Solutions
                 </div>
               </div>
