@@ -45,11 +45,6 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="#rates" className="text-gray-300 hover:text-purple-400">
-                Rate Card
-              </a>
-            </li>
-            <li>
               <a href="#delivery" className="text-gray-300 hover:text-purple-400">
                 Delivery
               </a>

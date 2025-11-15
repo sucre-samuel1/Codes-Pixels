@@ -158,7 +158,7 @@ export function Delivery() {
               </div>
             </div>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-md">
+              <button className="bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-md">
                 <a href="#contact" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-blue-700">
                   Start your Project
                 </a>

@@ -29,9 +29,6 @@ export function Navbar() {
             <a href="#projects" className="text-gray-700 hover:text-purple-600 font-medium">
               Projects
             </a>
-            <a href="#rates" className="text-gray-700 hover:text-purple-600 font-medium">
-              Rate Card
-            </a>
             <a href="#delivery" className="text-gray-700 hover:text-purple-600 font-medium">
               Delivery
             </a>
@@ -74,13 +71,6 @@ export function Navbar() {
               onClick={handleNavClick}
             >
               Projects
-            </a>
-            <a 
-              href="#rates" 
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100"
-              onClick={handleNavClick}
-            >
-              Rate Card
             </a>
             <a 
               href="#delivery" 
