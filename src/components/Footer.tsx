@@ -1,5 +1,5 @@
 import React from 'react';
-import { PhoneIcon, MailIcon, MapPinIcon, InstagramIcon, FacebookIcon, TwitterIcon } from 'lucide-react';
+import { PhoneIcon, MailIcon, MapPinIcon, InstagramIcon, TwitterIcon, LinkedinIcon } from 'lucide-react';
 export function Footer() {
   return <footer className="bg-gray-900 text-white">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -14,13 +14,13 @@ export function Footer() {
             From responsive websites to complex web applications.
           </p>
           <div className="mt-4 flex space-x-4">
-            <a href="#" className="text-gray-400 hover:text-purple-400">
-              <FacebookIcon size={20} />
+            <a href="https://www.linkedin.com/in/samuelakinboro/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400">
+              <LinkedinIcon size={20} />
             </a>
-            <a href="#" className="text-gray-400 hover:text-purple-400">
+            <a href="https://www.instagram.com/sucre_papii?igsh=cWszZTR2NWY4NzA0&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400">
               <InstagramIcon size={20} />
             </a>
-            <a href="#" className="text-gray-400 hover:text-purple-400">
+            <a href="https://x.com/sucre_papii?s=21&t=QnoqdrIaByUDrhoWj0KuLA" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400">
               <TwitterIcon size={20} />
             </a>
           </div>
@@ -39,12 +39,12 @@ export function Footer() {
                 Services
               </a>
             </li>
-             <li>
+            <li>
               <a href="#projects" className="text-gray-300 hover:text-purple-400">
                 Projects
               </a>
             </li>
-             <li>
+            <li>
               <a href="#rates" className="text-gray-300 hover:text-purple-400">
                 Rate Card
               </a>
@@ -81,7 +81,7 @@ export function Footer() {
             <li className="flex items-start">
               <MapPinIcon size={18} className="text-purple-400 mt-1 mr-2" />
               <span className="text-gray-300">
-               London, United Kingdom
+                Vancouver, British Columbia
               </span>
             </li>
           </ul>

@@ -14,7 +14,7 @@ export function App() {
         <Hero />
         <Services />
         <Projects/>
-        <RateCard />
+        {/* <RateCard /> */}
         <Delivery />
         <Contact />
       </main>
