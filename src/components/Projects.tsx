@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
-import { ExternalLinkIcon, GithubIcon, ArrowRightIcon } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { ExternalLinkIcon, GithubIcon, ArrowRightIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Calendar, Code, ShoppingCart, Cloud, Mail, Users, Zap, X } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 export function Projects() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const swiperRef = useRef(null);
   
   const featuredProjects = [
     {
@@ -32,7 +40,7 @@ export function Projects() {
       id: 3,
       title: 'PAYLODE Payment Gateway',
       description: 'Paylode Payment Gateway is a secure and seamless payment gateway that enables businesses to accept cards, bank transfers, USSD, and mobile money with ease, offering fast transactions and real-time reporting.',
-      image: 'https://paylodeservices.com/seamlesss.png',
+      image: 'https://images.unsplash.com/photo-1556740714-a8395b3bf30f?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       technologies: ['React', 'JavaScript', 'Context API', 'Material UI'],
       category: 'Fintech',
       liveUrl: 'https://paylodeservices.com/',
@@ -47,6 +55,17 @@ export function Projects() {
       technologies: ['React', 'TypeScript', 'GraphQL', 'Styled Components'],
       category: 'E-commerce',
       liveUrl: 'https://www.noasdelightsltd.com/',
+      githubUrl: '#',
+      featured: true
+    },
+     {
+      id: 5,
+      title: 'Self Service - Internal Revenue Service',
+      description: 'It is a seamless tax management with our modern self-service platform that is Fast, secure, and always available.',
+      image: 'https://selfservicepro.icmaservices.com/src/assets/images/state-logo.png',
+      technologies: ['React', 'TypeScript', 'Styled Components','API Integration'],
+      category: 'Tax,Revenue & Fintech',
+      liveUrl: 'https://selfservicepro.icmaservices.com/',
       githubUrl: '#',
       featured: true
     }
@@ -115,61 +134,118 @@ export function Projects() {
           </p>
         </div>
 
-        {/* Featured Projects */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-16">
-          {featuredProjects.map((project) => (
-            <div key={project.id} className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-4 right-4">
-                  <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    {project.category}
-                  </span>
+        {/* Slider Container */}
+        <div className="relative mb-16">
+          {/* Custom Navigation Buttons */}
+          <div className="flex justify-end gap-2 mb-4">
+            <button
+              className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors shadow-sm"
+              onClick={() => swiperRef.current?.slidePrev()}
+            >
+              <ChevronLeft size={20} className="text-gray-700" />
+            </button>
+            <button
+              className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors shadow-sm"
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <ChevronRight size={20} className="text-gray-700" />
+            </button>
+          </div>
+
+          {/* Slider */}
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={24}
+            slidesPerView={1}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 16,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 24,
+              },
+            }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+              el: '.swiper-pagination',
+            }}
+            loop={true}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            className="projects-slider pb-12"
+          >
+            {featuredProjects.map((project) => (
+              <SwiperSlide key={project.id}>
+                <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group h-full border border-gray-100">
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        {project.category}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div className="p-6 flex flex-col h-[calc(100%-12rem)]">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4 flex-grow text-sm">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.map((tech, index) => (
+                        <span
+                          key={index}
+                          className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <div className="flex items-center justify-between mt-auto">
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium text-sm"
+                      >
+                        Live Demo
+                        <ExternalLinkIcon size={16} className="ml-1" />
+                      </a>
+                      <a
+                        href={project.githubUrl}
+                        className="inline-flex items-center text-gray-600 hover:text-gray-900 font-medium text-sm"
+                      >
+                        Code
+                        <GithubIcon size={16} className="ml-1" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, index) => (
-                    <span
-                      key={index}
-                      className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <a
-                    href={project.liveUrl}
-                    className="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium text-sm"
-                  >
-                    Live Demo
-                    <ExternalLinkIcon size={16} className="ml-1" />
-                  </a>
-                  <a
-                    href={project.githubUrl}
-                    className="inline-flex items-center text-gray-600 hover:text-gray-900 font-medium text-sm"
-                  >
-                    Code
-                    <GithubIcon size={16} className="ml-1" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Pagination Dots */}
+          <div className="swiper-pagination flex justify-center gap-2 mt-4"></div>
         </div>
 
         {/* Call to Action */}
@@ -198,7 +274,7 @@ export function Projects() {
               </a>
               <button
                 onClick={openModal}
-                className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center font-medium"
+                className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center justify-center font-medium"
               >
                 View Rates
                 <ArrowRightIcon size={20} className="ml-2" />
