@@ -17,13 +17,13 @@ export function Footer() {
         async (position) => {
           try {
             const { latitude, longitude } = position.coords;
-            
+
             // Reverse geocoding using OpenStreetMap Nominatim
             const response = await fetch(
               `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
             );
             const data = await response.json();
-            
+
             if (data.address) {
               const { country, state, city, town, village } = data.address;
               const location = `${city || town || village || ''}, ${state || ''}, ${country || ''}`;
@@ -93,7 +93,7 @@ export function Footer() {
               </a>
             </div>
           </div>
-          
+
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
@@ -130,7 +130,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          
+
           {/* Contact Info */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
@@ -161,7 +161,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          
+
           {/* Newsletter */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Subscribe</h3>
@@ -176,16 +176,16 @@ export function Footer() {
             </form>
           </div>
         </div>
-        
+
         <div className="border-t border-gray-800 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2023 Code&Pixels Ltd. All rights reserved.
+            © {new Date().getFullYear()} Code&Pixels Ltd. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-gray-400 hover:text-purple-400 text-sm">
               Privacy Policy
             </a>
-            <a href="#" className="text-gray-400 hover:text-purple-400 text-sm">
+            <a href="#" className="text-gray-400 hover:text-purple-400 text-sm">uch
               Terms of Service
             </a>
             <a href="#" className="text-gray-400 hover:text-purple-400 text-sm">

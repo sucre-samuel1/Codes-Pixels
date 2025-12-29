@@ -10,8 +10,9 @@ export function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [activeStep, setActiveStep] = useState(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -21,28 +22,62 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Create email content
     const emailSubject = encodeURIComponent(formData.subject);
     const emailBody = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
-    
+
     // Create mailto link
     const mailtoLink = `mailto:akinboroo@gmail.com?subject=${emailSubject}&body=${emailBody}`;
-    
+
     // Open email client
     window.location.href = mailtoLink;
-    
+
     // Simulate submission success
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
     }, 1000);
+  };
+
+  const steps = [
+    {
+      id: 1,
+      title: "Send Message",
+      description: "Fill out the form and your email client will open with your message",
+      color: "purple"
+    },
+    {
+      id: 2,
+      title: "Initial Response",
+      description: "I'll review your message and get back to you within 24 hours",
+      color: "blue"
+    },
+    {
+      id: 3,
+      title: "Project Discussion",
+      description: "We'll schedule a call to discuss your project in detail",
+      color: "green"
+    }
+  ];
+
+  const handleStepClick = (stepId: number) => {
+    setActiveStep(activeStep === stepId ? null : stepId);
+  };
+
+  const getColorClasses = (color: string) => {
+    const colorMap: Record<string, { bg: string; text: string }> = {
+      purple: { bg: 'bg-purple-100', text: 'text-purple-600' },
+      blue: { bg: 'bg-blue-100', text: 'text-blue-600' },
+      green: { bg: 'bg-green-100', text: 'text-green-600' }
+    };
+    return colorMap[color] || colorMap.purple;
   };
 
   return (
@@ -71,8 +106,8 @@ export function Contact() {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Let's Connect</h3>
               <p className="text-gray-600 mb-8">
-                I'm always interested in new opportunities and exciting projects. 
-                Whether you need a website, web application, or product strategy consultation, 
+                I'm always interested in new opportunities and exciting projects.
+                Whether you need a website, web application, or product strategy consultation,
                 I'd love to hear from you.
               </p>
             </div>
@@ -85,8 +120,8 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Email</h4>
-                  <a 
-                    href="mailto:akinboroo@gmail.com" 
+                  <a
+                    href="mailto:akinboroo@gmail.com"
                     className="text-purple-600 hover:text-purple-700 transition-colors"
                   >
                     akinboroo@gmail.com
@@ -100,8 +135,8 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Phone</h4>
-                  <a 
-                    href="tel:+2349024129891" 
+                  <a
+                    href="tel:+2349024129891"
                     className="text-blue-600 hover:text-blue-700 transition-colors"
                   >
                     (+234) 90-2412-9891
@@ -200,16 +235,22 @@ export function Contact() {
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
                       Subject *
                     </label>
-                    <input
-                      type="text"
+                    <select
                       id="subject"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                      placeholder="What is this regarding?"
-                    />
+                    >
+                      <option value="" disabled>Select a subject</option>
+                      <option value="general">General Inquiry</option>
+                      <option value="sales">Web Development</option>
+                      <option value="billing">Mobile Development</option>
+                      <option value="feedback">Product Strategy & Roadmapping</option>
+                      <option value="support">Technical Support</option>
+                      <option value="other">Other</option>
+                    </select>
                   </div>
 
                   <div>
@@ -251,40 +292,47 @@ export function Contact() {
           </div>
         </div>
 
-        {/* Additional Info */}
+        {/* What Happens Next Section - Updated with interactive numbers */}
         <div className="mt-16 text-center">
           <div className="bg-white rounded-2xl shadow-lg p-8 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">What Happens Next?</h3>
+            <p className="text-gray-600 mb-8">Click on each number to reveal the next step</p>
+            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-purple-600 font-bold">1</span>
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Send Message</h4>
-                <p className="text-gray-600 text-sm">
-                  Fill out the form and your email client will open with your message
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-blue-600 font-bold">2</span>
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Initial Response</h4>
-                <p className="text-gray-600 text-sm">
-                  I'll review your message and get back to you within 24 hours
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-green-600 font-bold">3</span>
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Project Discussion</h4>
-                <p className="text-gray-600 text-sm">
-                  We'll schedule a call to discuss your project in detail
-                </p>
-              </div>
+              {steps.map((step) => {
+                const colorClasses = getColorClasses(step.color);
+                const isActive = activeStep === step.id;
+                
+                return (
+                  <div 
+                    key={step.id} 
+                    className="text-center cursor-pointer"
+                    onClick={() => handleStepClick(step.id)}
+                  >
+                    <div className={`w-16 h-16 ${colorClasses.bg} rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 ${isActive ? 'scale-110' : ''}`}>
+                      <span className={`text-2xl font-bold ${colorClasses.text}`}>
+                        {step.id}
+                      </span>
+                    </div>
+                    
+                    <div className={`transition-all duration-500 overflow-hidden ${isActive ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                      <h4 className="font-semibold text-gray-900 mb-2">{step.title}</h4>
+                      <p className="text-gray-600 text-sm">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
+        </div>
+
+        {/* Footer with dynamic year */}
+        <div className="mt-16 pt-8 border-t border-gray-200 text-center">
+          <p className="text-gray-400 text-sm">
+            © {new Date().getFullYear()} Code&Pixels Ltd. All rights reserved.
+          </p>
         </div>
       </div>
     </section>
