@@ -28,7 +28,7 @@ export function Projects() {
       id: 2,
       title: 'LASUCOM HRM',
       description: 'Human Resource Management system for managing employee data, leave requests, performance reviews, and payroll.',
-      image: 'https://hrm.lasucom.edu.ng/static/media/logo(small).824a602c86d258e8f1100d0322356515.svg',
+      image: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=876&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       technologies: ['React', 'JavaScript', 'Context API', 'Material UI'],
       category: 'Enterprise System',
       liveUrl: 'https://hrm.lasucom.edu.ng/',
