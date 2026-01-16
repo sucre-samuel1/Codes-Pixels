@@ -17,7 +17,7 @@ const Counter: React.FC<CounterProps> = ({ end, duration = 2000, suffix = '' }) 
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
-          
+
           let start = 0;
           const increment = end / (duration / 16);
           const timer = setInterval(() => {
@@ -33,7 +33,7 @@ const Counter: React.FC<CounterProps> = ({ end, duration = 2000, suffix = '' }) 
           return () => clearInterval(timer);
         }
       },
-      { 
+      {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
       }
@@ -68,7 +68,7 @@ export function Delivery() {
               Global Web Development Services
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-              We deliver high-quality web solutions worldwide with our premium development service, 
+              We deliver high-quality web solutions worldwide with our premium development service,
               ensuring your project is built to perfection and deployed successfully.
             </p>
             <div className="mt-8 space-y-6">
@@ -81,7 +81,7 @@ export function Delivery() {
                     Global Project Delivery
                   </h3>
                   <p className="mt-1 text-gray-600">
-                    We work with clients worldwide across all timezones, delivering 
+                    We work with clients worldwide across all timezones, delivering
                     robust web applications and digital solutions.
                   </p>
                 </div>
@@ -95,7 +95,7 @@ export function Delivery() {
                     Agile Development Sprints
                   </h3>
                   <p className="mt-1 text-gray-600">
-                    Structured development cycles with regular updates, demos, 
+                    Structured development cycles with regular updates, demos,
                     and flexible timelines to meet your business needs.
                   </p>
                 </div>
@@ -109,7 +109,7 @@ export function Delivery() {
                     Clean Code & Best Practices
                   </h3>
                   <p className="mt-1 text-gray-600">
-                    Production-ready code following industry standards, with 
+                    Production-ready code following industry standards, with
                     comprehensive documentation and scalability in mind.
                   </p>
                 </div>
@@ -123,7 +123,7 @@ export function Delivery() {
                     Secure Deployment
                   </h3>
                   <p className="mt-1 text-gray-600">
-                    Secure hosting setup with SSL, regular backups, and 
+                    Secure hosting setup with SSL, regular backups, and
                     performance optimization for your peace of mind.
                   </p>
                 </div>
@@ -137,7 +137,7 @@ export function Delivery() {
                     Real-Time Project Tracking
                   </h3>
                   <p className="mt-1 text-gray-600">
-                    Monitor project progress through dedicated dashboards with 
+                    Monitor project progress through dedicated dashboards with
                     live updates and milestone tracking.
                   </p>
                 </div>
@@ -151,24 +151,25 @@ export function Delivery() {
                     Performance Optimized
                   </h3>
                   <p className="mt-1 text-gray-600">
-                    Lightning-fast applications optimized for speed, SEO, and 
+                    Lightning-fast applications optimized for speed, SEO, and
                     exceptional user experience across all devices.
                   </p>
                 </div>
               </div>
             </div>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <button className="bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-md">
-                <a href="#contact" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-blue-700">
-                  Start your Project
-                </a>
-              </button>
+              <a
+                href="#contact"
+                className="bg-purple-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-purple-700 transition-colors shadow-md inline-flex items-center justify-center text-lg"
+              >
+                Start your Project
+              </a>
             </div>
           </div>
           <div className="relative">
-            <img 
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" 
-              alt="Developer working on code with multiple screens" 
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+              alt="Developer working on code with multiple screens"
               className="rounded-2xl shadow-2xl w-full h-auto"
             />
             <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg border border-gray-100">

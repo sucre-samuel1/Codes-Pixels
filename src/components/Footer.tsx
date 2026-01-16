@@ -69,92 +69,81 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="bg-gray-900 text-white border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold text-purple-400 mb-4">
+            <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400 font-display mb-6">
               Code&Pixels
             </h3>
-            <p className="text-gray-300">
+            <p className="text-gray-400 leading-relaxed mb-6">
               Crafting cutting-edge digital experiences with modern technologies.
               From responsive websites to complex web applications.
             </p>
-            <div className="mt-4 flex space-x-4">
-              <a href="https://www.linkedin.com/in/samuelakinboro/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400">
-                <LinkedinIcon size={20} />
-              </a>
-              <a href="https://www.instagram.com/sucre_papii?igsh=cWszZTR2NWY4NzA0&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400">
-                <InstagramIcon size={20} />
-              </a>
-              <a href="https://x.com/sucre_papii?s=21&t=QnoqdrIaByUDrhoWj0KuLA" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400">
-                <TwitterIcon size={20} />
-              </a>
+            <div className="flex space-x-4">
+              {[
+                { icon: <LinkedinIcon size={20} />, href: "https://www.linkedin.com/in/samuelakinboro/" },
+                { icon: <InstagramIcon size={20} />, href: "https://www.instagram.com/sucre_papii?igsh=cWszZTR2NWY4NzA0&utm_source=qr" },
+                { icon: <TwitterIcon size={20} />, href: "https://x.com/sucre_papii?s=21&t=QnoqdrIaByUDrhoWj0KuLA" }
+              ].map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-800 p-2 rounded-lg text-gray-400 hover:text-white hover:bg-purple-600 transition-all duration-300"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-300 hover:text-purple-400">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 hover:text-purple-400">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#projects" className="text-gray-300 hover:text-purple-400">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="#delivery" className="text-gray-300 hover:text-purple-400">
-                  Delivery
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-300 hover:text-purple-400">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-gray-300 hover:text-purple-400">
-                  Contact
-                </a>
-              </li>
+            <h3 className="text-lg font-semibold mb-6 text-white">Quick Links</h3>
+            <ul className="space-y-4">
+              {['Home', 'Services', 'Projects', 'Delivery', 'Contact'].map((item) => (
+                <li key={item}>
+                  <a href={`#${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`} className="text-gray-400 hover:text-purple-400 transition-colors flex items-center">
+                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-2 opacity-0 hover:opacity-100 transition-opacity"></span>
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <ul className="space-y-3">
+            <h3 className="text-lg font-semibold mb-6 text-white">Contact Us</h3>
+            <ul className="space-y-4">
               <li className="flex items-start">
-                <PhoneIcon size={18} className="text-purple-400 mt-1 mr-2" />
-                <span className="text-gray-300">+234 9024129891</span>
+                <div className="bg-gray-800 p-2 rounded-lg mr-3">
+                  <PhoneIcon size={18} className="text-purple-400" />
+                </div>
+                <span className="text-gray-400 mt-1">+234 9024129891</span>
               </li>
               <li className="flex items-start">
-                <MailIcon size={18} className="text-purple-400 mt-1 mr-2" />
-                <span className="text-gray-300">akinboroo@gmail.com</span>
+                <div className="bg-gray-800 p-2 rounded-lg mr-3">
+                  <MailIcon size={18} className="text-purple-400" />
+                </div>
+                <span className="text-gray-400 mt-1">akinboroo@gmail.com</span>
               </li>
               <li className="flex items-start">
-                <MapPinIcon size={18} className="text-purple-400 mt-1 mr-2" />
-                <span className="text-gray-300">
-                  Lagos, Nigeria
-                </span>
+                <div className="bg-gray-800 p-2 rounded-lg mr-3">
+                  <MapPinIcon size={18} className="text-purple-400" />
+                </div>
+                <span className="text-gray-400 mt-1">Lagos, Nigeria</span>
               </li>
-              {/* New Location Display */}
-              <li className="flex items-start mt-4 pt-4 border-t border-gray-700">
-                <GlobeIcon size={18} className="text-green-400 mt-1 mr-2" />
+              <li className="flex items-start pt-4 border-t border-gray-800 mt-2">
+                <div className="bg-gray-800 p-2 rounded-lg mr-3">
+                  <GlobeIcon size={18} className="text-green-400" />
+                </div>
                 <div>
-                  <p className="text-xs text-gray-400 mb-1">Website opened from:</p>
-                  <span className="text-gray-300 text-sm">
+                  <p className="text-xs text-gray-500 mb-0.5">Website opened from:</p>
+                  <span className="text-gray-300 text-sm font-medium">
                     {locationData.loading ? 'Detecting location...' : userLocation}
                   </span>
                 </div>
@@ -164,35 +153,19 @@ export function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Subscribe</h3>
-            <p className="text-gray-300 mb-4">
+            <h3 className="text-lg font-semibold mb-6 text-white">Subscribe</h3>
+            <p className="text-gray-400 mb-4 text-sm">
               Stay updated with our latest offers and new menu items.
             </p>
-            <form className="flex flex-col space-y-2">
-              <input type="email" placeholder="Your email address" className="px-4 py-2 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
-              <button type="submit" className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors">
+            <form className="flex flex-col space-y-3">
+              <input type="email" placeholder="Your email address" className="px-4 py-3 bg-gray-800 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 border border-gray-700 placeholder-gray-500" />
+              <button type="submit" className="bg-purple-600 text-white px-4 py-3 rounded-xl hover:bg-purple-700 transition-colors font-medium shadow-lg shadow-purple-900/20">
                 Subscribe
               </button>
             </form>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Code&Pixels Ltd. All rights reserved.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-purple-400 text-sm">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-gray-400 hover:text-purple-400 text-sm">uch
-              Terms of Service
-            </a>
-            <a href="#" className="text-gray-400 hover:text-purple-400 text-sm">
-              Cookie Policy
-            </a>
-          </div>
-        </div>
       </div>
     </footer>
   );

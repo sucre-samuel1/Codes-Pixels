@@ -297,15 +297,15 @@ export function Contact() {
           <div className="bg-white rounded-2xl shadow-lg p-8 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">What Happens Next?</h3>
             <p className="text-gray-600 mb-8">Click on each number to reveal the next step</p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {steps.map((step) => {
                 const colorClasses = getColorClasses(step.color);
                 const isActive = activeStep === step.id;
-                
+
                 return (
-                  <div 
-                    key={step.id} 
+                  <div
+                    key={step.id}
                     className="text-center cursor-pointer"
                     onClick={() => handleStepClick(step.id)}
                   >
@@ -314,7 +314,7 @@ export function Contact() {
                         {step.id}
                       </span>
                     </div>
-                    
+
                     <div className={`transition-all duration-500 overflow-hidden ${isActive ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                       <h4 className="font-semibold text-gray-900 mb-2">{step.title}</h4>
                       <p className="text-gray-600 text-sm">
@@ -328,12 +328,7 @@ export function Contact() {
           </div>
         </div>
 
-        {/* Footer with dynamic year */}
-        <div className="mt-16 pt-8 border-t border-gray-200 text-center">
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Code&Pixels Ltd. All rights reserved.
-          </p>
-        </div>
+
       </div>
     </section>
   );

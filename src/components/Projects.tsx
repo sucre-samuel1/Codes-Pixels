@@ -11,8 +11,8 @@ import 'swiper/css/pagination';
 
 export function Projects() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const swiperRef = useRef(null);
-  
+  const swiperRef = useRef<any>(null);
+
   const featuredProjects = [
     {
       id: 1,
@@ -58,14 +58,25 @@ export function Projects() {
       githubUrl: '#',
       featured: true
     },
-     {
+    {
       id: 5,
       title: 'Self Service - Internal Revenue Service',
       description: 'It is a seamless tax management with our modern self-service platform that is Fast, secure, and always available.',
       image: 'https://selfservicepro.icmaservices.com/src/assets/images/state-logo.png',
-      technologies: ['React', 'TypeScript', 'Styled Components','API Integration'],
+      technologies: ['React', 'TypeScript', 'Styled Components', 'API Integration'],
       category: 'Tax,Revenue & Fintech',
       liveUrl: 'https://selfservicepro.icmaservices.com/',
+      githubUrl: '#',
+      featured: true
+    },
+    {
+      id: 6,
+      title: 'Vadtrans Trasnportation',
+      description: 'Vadtrans Trasnportation is Nigeria\'s leading transportation booking platform, connecting travelers with reliable transport companies across the country and beyond.',
+      image: 'https://images.unsplash.com/photo-1498084393753-b411b2d26b34?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      technologies: ['React', 'TypeScript', 'Styled Components', 'API Integration'],
+      category: 'Transportation',
+      liveUrl: 'https://vadtrans-git-main-samuel-akinboros-projects.vercel.app/',
       githubUrl: '#',
       featured: true
     }
@@ -135,108 +146,102 @@ export function Projects() {
         </div>
 
         {/* Slider Container */}
-        <div className="relative mb-16">
-          {/* Custom Navigation Buttons */}
-          <div className="flex justify-end gap-2 mb-4">
-            <button
-              className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors shadow-sm"
-              onClick={() => swiperRef.current?.slidePrev()}
-            >
-              <ChevronLeft size={20} className="text-gray-700" />
-            </button>
-            <button
-              className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors shadow-sm"
-              onClick={() => swiperRef.current?.slideNext()}
-            >
-              <ChevronRight size={20} className="text-gray-700" />
-            </button>
-          </div>
-
+        <div className="relative mb-20 px-4 md:px-0">
           {/* Slider */}
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={24}
+            spaceBetween={32}
             slidesPerView={1}
             breakpoints={{
               640: {
                 slidesPerView: 1,
-                spaceBetween: 16,
+                spaceBetween: 24,
               },
               768: {
                 slidesPerView: 2,
-                spaceBetween: 20,
+                spaceBetween: 32,
               },
               1024: {
                 slidesPerView: 3,
-                spaceBetween: 24,
+                spaceBetween: 32,
               },
             }}
             autoplay={{
-              delay: 3000,
+              delay: 4000,
               disableOnInteraction: false,
             }}
             pagination={{
               clickable: true,
               el: '.swiper-pagination',
+              bulletClass: 'swiper-pagination-bullet !w-2.5 !h-2.5 !bg-gray-300 !opacity-100',
+              bulletActiveClass: '!bg-purple-600 !w-8 !rounded-full transition-all duration-300',
             }}
             loop={true}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
-            className="projects-slider pb-12"
+            className="projects-slider !pb-16"
           >
             {featuredProjects.map((project) => (
-              <SwiperSlide key={project.id}>
-                <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group h-full border border-gray-100">
-                  <div className="relative overflow-hidden">
+              <SwiperSlide key={project.id} className="h-full">
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group h-full border border-gray-100 flex flex-col">
+                  {/* Image Container */}
+                  <div className="relative overflow-hidden aspect-video">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                      <div className="flex gap-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-white text-gray-900 p-2 rounded-full hover:bg-purple-600 hover:text-white transition-colors"
+                            title="View Live Demo"
+                          >
+                            <ExternalLinkIcon size={20} />
+                          </a>
+                        )}
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-white text-gray-900 p-2 rounded-full hover:bg-purple-600 hover:text-white transition-colors"
+                            title="View Code"
+                          >
+                            <GithubIcon size={20} />
+                          </a>
+                        )}
+                      </div>
+                    </div>
                     <div className="absolute top-4 right-4">
-                      <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      <span className="bg-white/90 backdrop-blur-sm text-purple-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow-sm">
                         {project.category}
                       </span>
                     </div>
                   </div>
-                  
-                  <div className="p-6 flex flex-col h-[calc(100%-12rem)]">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+
+                  <div className="p-8 flex flex-col flex-grow">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 flex-grow text-sm">
+                    <p className="text-gray-600 mb-6 flex-grow leading-relaxed">
                       {project.description}
                     </p>
-                    
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech, index) => (
+
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {project.technologies.slice(0, 4).map((tech, index) => (
                         <span
                           key={index}
-                          className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs"
+                          className="bg-gray-50 text-gray-600 border border-gray-100 px-3 py-1 rounded-md text-xs font-semibold"
                         >
                           {tech}
                         </span>
                       ))}
-                    </div>
-                    
-                    <div className="flex items-center justify-between mt-auto">
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium text-sm"
-                      >
-                        Live Demo
-                        <ExternalLinkIcon size={16} className="ml-1" />
-                      </a>
-                      <a
-                        href={project.githubUrl}
-                        className="inline-flex items-center text-gray-600 hover:text-gray-900 font-medium text-sm"
-                      >
-                        Code
-                        <GithubIcon size={16} className="ml-1" />
-                      </a>
                     </div>
                   </div>
                 </div>
@@ -244,8 +249,24 @@ export function Projects() {
             ))}
           </Swiper>
 
+          {/* Custom Navigation Buttons - Absolute Positioned */}
+          <button
+            onClick={() => swiperRef.current?.slidePrev()}
+            className="absolute top-1/2 -left-4 md:-left-12 -translate-y-1/2 z-10 p-3 rounded-full bg-white text-gray-800 shadow-lg hover:bg-purple-600 hover:text-white transition-all duration-300 focus:outline-none hidden md:block"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            onClick={() => swiperRef.current?.slideNext()}
+            className="absolute top-1/2 -right-4 md:-right-12 -translate-y-1/2 z-10 p-3 rounded-full bg-white text-gray-800 shadow-lg hover:bg-purple-600 hover:text-white transition-all duration-300 focus:outline-none hidden md:block"
+            aria-label="Next slide"
+          >
+            <ChevronRight size={24} />
+          </button>
+
           {/* Pagination Dots */}
-          <div className="swiper-pagination flex justify-center gap-2 mt-4"></div>
+          <div className="swiper-pagination flex justify-center gap-2 mt-8"></div>
         </div>
 
         {/* Call to Action */}
@@ -285,14 +306,14 @@ export function Projects() {
 
         {/* RateCard Modal */}
         {isModalOpen && (
-          <div 
+          <div
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50"
             onClick={(e) => {
               if (e.target === e.currentTarget) closeModal();
             }}
           >
             <div className="bg-white rounded-2xl shadow-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-              
+
               {/* Modal Header */}
               <div className="sticky top-0 bg-white border-b border-gray-200 p-6 rounded-t-2xl z-10">
                 <div className="flex justify-between items-center">
